@@ -1,3 +1,3 @@
 # esphome-ST7735-Display
-esphome ST7735 Display
+esphome ST7735 Display  
 Under construction, will be update soon...
