@@ -6,8 +6,6 @@ Draft :
 
 > ST7735 Display drivers:   
 ```
-python3 -m pip install pillow --upgrade
-
 captive_portal:
 
 # Connections:
