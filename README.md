@@ -31,7 +31,7 @@ display:
 
     rotation: 0
     device_width: 130
-    device_height: 161
+    device_height: 162
     col_start: 0
     row_start: 0
     # eight_bit_color: True
@@ -58,7 +58,7 @@ interval:
     then:
       - display.page.show_next: esp32_display
 ```
-> Show next page by press a Button:   
+> Show next page by press a button connect to GPIO25:   
 ```
 binary_sensor:
   - platform: gpio
@@ -76,10 +76,17 @@ binary_sensor:
         - display.page.show_next: esp32_display
         - component.update: esp32_display
 ```
-
-
-
-
+> Define color:   
+```    
+display:
+  ......
+    pages:
+      - id: page1
+        lambda: |-
+          auto red = Color(255, 0, 0);
+          auto lime = Color(0, 255, 0);
+          auto blue = Color(0, 0, 255);
+```
 > Display time:   
 ```
 time:
@@ -98,7 +105,6 @@ display:
           it.strftime(x, y, id(font_c1), green, TextAlign::TOP_LEFT, "%m月%d日", id(esptime).now());
     
 ```
-
 
 
 
