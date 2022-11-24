@@ -51,3 +51,59 @@ display:
         lambda: |-
           ......
 ```
+> Show next page after 180s:   
+```
+interval:
+  - interval: 180s
+    then:
+      - display.page.show_next: esp32_display
+```
+> Show next page by press a Button:   
+```
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO25
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    name: "ESP32 Button 1"
+    internal: true
+    # device_class: "occupancy"
+    on_press:
+      then:
+        - display.page.show_next: esp32_display
+        - component.update: esp32_display
+```
+
+
+
+
+> Display time:   
+```
+time:
+  - platform: homeassistant
+    id: esptime
+    timezone: Asia/Hong_Kong
+    
+display:
+  ......
+    pages:
+      - id: page1
+        lambda: |-
+          // Green
+          auto green = Color(0, 128, 0);
+          it.strftime(x, y, id(font_d1), green, TextAlign::CENTER, "%I:%M", id(esptime).now()); 
+          it.strftime(x, y, id(font_c1), green, TextAlign::TOP_LEFT, "%m月%d日", id(esptime).now());
+    
+```
+
+
+
+
+
+
+
+
+
