@@ -24,7 +24,7 @@ spi:
 display:
   - platform: st7735
     model: "INITR_18BLACKTAB"
-    id: n1_display
+    id: esp32_display
     reset_pin: GPIO27
     dc_pin: GPIO26
     cs_pin: GPIO25
@@ -38,5 +38,16 @@ display:
     # use_bgr: True
     update_interval: 5s
     setup_priority: -100
-
+```
+> Pages:   
+```
+display:
+  ......
+    pages:
+      - id: page1
+        lambda: |-
+          ......
+      - id: page2
+        lambda: |-
+          ......
 ```
