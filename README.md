@@ -58,7 +58,7 @@ interval:
     then:
       - display.page.show_next: esp32_display
 ```
-> Show next page by press a button connect to GPIO25:   
+> Show next page by press a button connected to GPIO25:   
 ```
 binary_sensor:
   - platform: gpio
@@ -102,7 +102,7 @@ font:
   - file: 'fonts/msjh.ttf'
     id: font_c1
     size: 12
-    glyphs: 年月日時分秒間一二三四五六七九十百千萬室內外溫濕光度空氣質素香港電台第μ³!"%()+,-_.:°/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+    glyphs: 年月日時分秒間一二三四五六七八九十百千萬室內外溫濕光度空氣質素香港電台第μ³!"%()+,-_.:°/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
 ```
 > Define fonts (Icon), put ttf file into \\HOMEASSISTANT\config\esphome\fonts:   
 ```    
@@ -114,13 +114,6 @@ font:
       - "\U000F0594" # clear-night
       - "\U000F0590" # cloudy
 ```
-
-
-
-
-
-
-
 > Display time:   
 ```
 time:
