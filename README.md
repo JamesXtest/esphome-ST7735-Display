@@ -79,7 +79,8 @@ binary_sensor:
 > Define color:   
 ```    
 display:
-  ......
+  - platform: st7735
+    ......
     pages:
       - id: page1
         lambda: |-
@@ -87,6 +88,39 @@ display:
           auto lime = Color(0, 255, 0);
           auto blue = Color(0, 0, 255);
 ```
+> Define fonts (English), put ttf file into \\HOMEASSISTANT\config\esphome\fonts:   
+```    
+font:
+  - file: 'fonts/MYRIADPRO-SEMIBOLD.ttf'
+    id: font_e1
+    size: 12
+    glyphs: μ³!"%()+,-_.:°/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+```
+> Define fonts (Chinese), put ttf file into \\HOMEASSISTANT\config\esphome\fonts:   
+```    
+font:
+  - file: 'fonts/msjh.ttf'
+    id: font_c1
+    size: 12
+    glyphs: 年月日時分秒間一二三四五六七九十百千萬室內外溫濕光度空氣質素香港電台第μ³!"%()+,-_.:°/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+```
+> Define fonts (Icon), put ttf file into \\HOMEASSISTANT\config\esphome\fonts:   
+```    
+font:
+  - file: 'fonts/materialdesignicons-webfont.ttf'
+    id: weather_font
+    size: 96
+    glyphs:
+      - "\U000F0594" # clear-night
+      - "\U000F0590" # cloudy
+```
+
+
+
+
+
+
+
 > Display time:   
 ```
 time:
@@ -95,17 +129,64 @@ time:
     timezone: Asia/Hong_Kong
     
 display:
-  ......
+  - platform: st7735
+    ......
     pages:
       - id: page1
         lambda: |-
           // Green
           auto green = Color(0, 128, 0);
+          ......          
           it.strftime(x, y, id(font_d1), green, TextAlign::CENTER, "%I:%M", id(esptime).now()); 
           it.strftime(x, y, id(font_c1), green, TextAlign::TOP_LEFT, "%m月%d日", id(esptime).now());
     
 ```
+> Display WiFi signal icon:   
+```
+sensor:
+  - platform: wifi_signal
+    name: "ESP32_D1 WiFi signal"
+    update_interval: 20s   
 
+  - platform: homeassistant
+    id: esp32_d1_wifi_sig
+    entity_id: sensor.esp32_d1_wifi_signal
+    internal: true
+
+font:
+  - file: 'fonts/materialdesignicons-webfont.ttf'
+    id: icon_font_16
+    size: 16
+    glyphs:
+      - "\U000F092E" # mdi-wifi-strength-off-outline
+      - "\U000F0920" # mdi-wifi-strength-1-alert
+      ......   
+    
+display:
+  - platform: st7735
+    ......
+    pages:
+      - id: page1
+        lambda: |-
+          // Green
+          auto green = Color(0, 128, 0);
+          ......          
+          if(id(esp32_d1_wifi_sig).has_state()) {
+            if (id(esp32_d1_wifi_sig).state >= -50) {
+                //Excellent
+                it.print(z, y, id(icon_font_16), green, TextAlign::TOP_RIGHT, "\U000F0928");
+            } else if (id(esp32_d1_wifi_sig).state  >= -60) {
+                //Good                
+                it.print(z, y, id(icon_font_16), green, TextAlign::TOP_RIGHT, "\U000F0925");
+            }
+            ...... 
+            else {
+                //Unlikely working signal
+                it.print(z, y, id(icon_font_16), green, TextAlign::TOP_RIGHT, "\U000F092E");
+            }
+          }
+
+```
 
 
 
