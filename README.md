@@ -144,8 +144,17 @@ text_sensor:
     id: weekday_chinese
     entity_id: sensor.weekday_chinese
     internal: true
+
+display:
+  - platform: st7735
+    ......
+    pages:
+      - id: page1
+        lambda: |-
+          ...... 
+          it.printf(x, y, id(font_c1), green, TextAlign::TOP_LEFT, "%s", id(weekday_chinese).state.c_str());
 ```
-> - copy below to your configuration.yaml 
+> - copy below to your configuration.yaml and then restart
 ```   
 sensor:
     ......        
@@ -159,9 +168,6 @@ sensor:
             {% set dayz = ["星期日", "星期一","星期二","星期三","星期四","星期五","星期六"] %}
             {{dayz[wk + 0]}}
 ```
-
-
-
 
 > Display WiFi signal icon:   
 ```
