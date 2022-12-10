@@ -154,7 +154,7 @@ display:
           ...... 
           it.printf(x, y, id(font_c1), green, TextAlign::TOP_LEFT, "%s", id(weekday_chinese).state.c_str());
 ```
-> - copy below to your configuration.yaml and then restart
+> - Copy below to your configuration.yaml and then restart
 ```   
 sensor:
     ......        
@@ -188,6 +188,10 @@ font:
     glyphs:
       - "\U000F092E" # mdi-wifi-strength-off-outline
       - "\U000F0920" # mdi-wifi-strength-1-alert
+      - "\U000F0922" # mdi-wifi-strength-2
+      - "\U000F0925" # mdi-wifi-strength-3
+      - "\U000F0928" # mdi-wifi-strength-4
+      - "\U000F02DC" # mdi-home
       ......   
     
 display:
@@ -215,7 +219,17 @@ display:
           }
 
 ```
-
+> Display info from OpenWeatherMap:   
+> - Found out your location and copy below to your configuration.yaml and then restart
+```   
+homeassistant:
+  name: my_home                 # as per your own setting
+  latitude:                     # as per your location
+  longitude:                    # as per your location
+  unit_system: metric           # as per your own setting
+  time_zone: Asia/Hong_Kong     # as per your location
+```
+> - https://www.home-assistant.io/integrations/openweathermap/
 
 
 
