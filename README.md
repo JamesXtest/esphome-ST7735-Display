@@ -2,8 +2,6 @@
 esphome ST7735 Display  
 Under construction, will be update soon...  
 
-Draft :
-
 > ST7735 Display drivers:   
 ```
 captive_portal:
@@ -136,6 +134,20 @@ display:
     
 ```
 > Display weekday in Chinese:
+> - Copy below to your configuration.yaml and then restart
+```   
+sensor:
+    ......        
+  - platform: template
+    sensors:
+      weekday_chinese:
+        friendly_name: "Chinese weekday"
+        icon_template: 'mdi:calendar-clock'
+        value_template: >-
+            {% set wk = now().strftime('%w') | int %}
+            {% set dayz = ["星期日", "星期一","星期二","星期三","星期四","星期五","星期六"] %}
+            {{dayz[wk + 0]}}
+```
 > - copy below to your esphome.yaml   
 ```    
 text_sensor:
@@ -154,21 +166,6 @@ display:
           ...... 
           it.printf(x, y, id(font_c1), green, TextAlign::TOP_LEFT, "%s", id(weekday_chinese).state.c_str());
 ```
-> - Copy below to your configuration.yaml and then restart
-```   
-sensor:
-    ......        
-  - platform: template
-    sensors:
-      weekday_chinese:
-        friendly_name: "Chinese weekday"
-        icon_template: 'mdi:calendar-clock'
-        value_template: >-
-            {% set wk = now().strftime('%w') | int %}
-            {% set dayz = ["星期日", "星期一","星期二","星期三","星期四","星期五","星期六"] %}
-            {{dayz[wk + 0]}}
-```
-
 > Display WiFi signal icon:   
 ```
 sensor:
@@ -191,7 +188,6 @@ font:
       - "\U000F0922" # mdi-wifi-strength-2
       - "\U000F0925" # mdi-wifi-strength-3
       - "\U000F0928" # mdi-wifi-strength-4
-      - "\U000F02DC" # mdi-home
       ......   
     
 display:
