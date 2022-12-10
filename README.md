@@ -226,7 +226,23 @@ homeassistant:
   time_zone: Asia/Hong_Kong     # as per your location
 ```
 > - https://www.home-assistant.io/integrations/openweathermap/
-
+> - Copy below to your configuration.yaml and then restart
+```   
+template:
+    sensor:
+      - name: Todays Forecast Pressure
+        icon: "mdi:arrow-collapse-down"
+        state: >
+          {{ states.weather.openweathermap.attributes.pressure }}
+      - name: Todays Forecast Wind Bearing
+        icon: "mdi:windsock"
+        state: >
+          {{ states.weather.openweathermap.attributes.wind_bearing }}
+      - name: Todays Forecast Wind Speed
+        icon: "mdi:windsock"
+        state: >
+          {{ states.weather.openweathermap.attributes.wind_speed }}
+```
 
 
 
