@@ -135,6 +135,34 @@ display:
           it.strftime(z, y+110, id(font_e1), green, TextAlign::TOP_RIGHT, "%p", id(esptime).now());
     
 ```
+> Display weekday in Chinese:
+> - copy below to your esphome.yaml   
+```    
+text_sensor:
+    ......
+  - platform: homeassistant
+    id: weekday_chinese
+    entity_id: sensor.weekday_chinese
+    internal: true
+```
+> - copy below to your configuration.yaml 
+```   
+sensor:
+    ......        
+  - platform: template
+    sensors:
+      weekday_chinese:
+        friendly_name: "Chinese weekday"
+        icon_template: 'mdi:calendar-clock'
+        value_template: >-
+            {% set wk = now().strftime('%w') | int %}
+            {% set dayz = ["星期日", "星期一","星期二","星期三","星期四","星期五","星期六"] %}
+            {{dayz[wk + 0]}}
+```
+
+
+
+
 > Display WiFi signal icon:   
 ```
 sensor:
