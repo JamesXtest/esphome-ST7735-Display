@@ -102,7 +102,7 @@ font:
   - file: 'fonts/msjh.ttf'
     id: font_c1
     size: 12
-    glyphs: 年月日時分秒間一二三四五六七八九十百千萬室內外溫濕光度空氣質素香港電台第μ³!"%()+,-_.:°/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+    glyphs: 年月日時分秒星期間一二三四五六七九十百千萬室內外溫濕光度空氣質素香港電台第μ³!"%()+,-_.:°/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
 ```
 > Define fonts (Icon), put ttf file into \\HOMEASSISTANT\config\esphome\fonts:   
 ```    
@@ -130,8 +130,9 @@ display:
           // Green
           auto green = Color(0, 128, 0);
           ......          
-          it.strftime(x, y, id(font_d1), green, TextAlign::CENTER, "%I:%M", id(esptime).now()); 
-          it.strftime(x, y, id(font_c1), green, TextAlign::TOP_LEFT, "%m月%d日", id(esptime).now());
+          it.strftime(x, y, id(font_d2), green, TextAlign::CENTER, "%l:%M", id(esptime).now());    
+          it.strftime(x, y, id(font_c1), green, TextAlign::TOP_LEFT, "%-m月 %-d日", id(esptime).now());
+          it.strftime(z, y+110, id(font_e1), green, TextAlign::TOP_RIGHT, "%p", id(esptime).now());
     
 ```
 > Display WiFi signal icon:   
