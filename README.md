@@ -2,6 +2,10 @@
 esphome ST7735 Display  
 Under construction, will be update soon...  
 
+<br>
+![Screenshot](https://github.com/JamesXtest/esphome-ST7735-Display/edit/main/images/openweathermap.png)
+<br>
+
 > ST7735 Display drivers:   
 ```
 captive_portal:
