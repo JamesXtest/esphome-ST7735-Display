@@ -3,7 +3,7 @@ esphome ST7735 Display
 Under construction, will be update soon...  
 
 <br>
-![Screenshot](https://github.com/JamesXtest/esphome-ST7735-Display/main/images/openweathermap.png)
+![Screenshot](https://github.com/JamesXtest/esphome-ST7735-Displayimages/openweathermap.png)
 <br>
 
 > ST7735 Display drivers:   
