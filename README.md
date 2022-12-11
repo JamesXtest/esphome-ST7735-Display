@@ -228,7 +228,7 @@ homeassistant:
 > - https://www.home-assistant.io/integrations/openweathermap/
 > - Look for the data from OpenWeatherMap as below,    
   Developer Tools > STATES
-  <img src = “images/openweathermap.png” width = 200>    
+  <img src = “images/openweathermap.png”>
   <br>
 
 
